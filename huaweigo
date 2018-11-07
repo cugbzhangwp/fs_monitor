@@ -1,0 +1,13 @@
+#/bin/bash
+make clean
+make
+cp app ../Geo_Pi/
+cp piip ../Geo_Pi/
+if [ $? -eq 0 ]
+then
+make clean
+tar  -czf ../pi_backup/`date +%Y%m%d-%H%M%S`.tar.gz ./*
+#tar --exclude ../pi_backup/ -czf ./backup/`date +%Y%m%d%H%M%S`.tar.gz ./*
+else
+    echo "执行失败"
+fi
